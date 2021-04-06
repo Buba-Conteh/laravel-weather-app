@@ -1950,17 +1950,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     // console.log('Component mounted.');
@@ -1989,7 +1978,7 @@ __webpack_require__.r(__webpack_exports__);
       fetch("/api/weather?lat=".concat(this.location.lat, "&lng=").concat(this.location.lng, "&name=").concat(this.location.name)).then(function (res) {
         return res.json();
       }).then(function (data) {
-        console.log(data.daily);
+        console.log(data);
         _this.currentTemprature.actual = Math.round(data.currently.temperature);
         _this.currentTemprature.feels = Math.round(data.currently.apparentTemperature);
         _this.currentTemprature.summary = data.currently.summary;
@@ -37382,7 +37371,7 @@ var render = function() {
           _c("div", { staticClass: "col-4" }, [
             _c("h1", [
               _vm._v(
-                "\n                   " +
+                "\n                       " +
                   _vm._s(_vm.currentTemprature.actual) +
                   " "
               ),
@@ -37415,7 +37404,36 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(2)
+      _c(
+        "div",
+        { staticClass: "card-body bg-secondary text-light" },
+        _vm._l(_vm.daily, function(day, index) {
+          return _c("div", { key: index, staticClass: "row" }, [
+            _c("div", { staticClass: "col-12 py-2" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-2" }, [_vm._v("Mon")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-8" }, [
+                  _vm._v(_vm._s(day.summary))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-2" }, [
+                  _c("span", [
+                    _vm._v(_vm._s(day.apparentTemperatureHigh) + " "),
+                    _c("sup", [_vm._v("o")]),
+                    _vm._v("C")
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("hr")
+            ]),
+            _vm._v(" "),
+            _c("hr")
+          ])
+        }),
+        0
+      )
     ])
   ])
 }
@@ -37431,62 +37449,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("span", [_c("sup", [_vm._v("o")]), _vm._v("C")])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body bg-secondary text-light" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12 py-2" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-2" }, [_vm._v("Mon")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-8" }, [
-              _vm._v("Clear trough out the day")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-2" }, [
-              _c("span", [_vm._v("30 "), _c("sup", [_vm._v("o")]), _vm._v("C")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("hr")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 py-2" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-2" }, [_vm._v("Mon")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-8" }, [
-              _vm._v("Clear trough out the day")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-2" }, [
-              _c("span", [_vm._v("30 "), _c("sup", [_vm._v("o")]), _vm._v("C")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("hr")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12 py-2" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-2" }, [_vm._v("Mon")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-8" }, [
-              _vm._v("Clear trough out the day")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-2" }, [
-              _c("span", [_vm._v("30 "), _c("sup", [_vm._v("o")]), _vm._v("C")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("hr")
-        ])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -49822,8 +49784,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\weather-app\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\weather-app\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\laravel-weather-app\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel-weather-app\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

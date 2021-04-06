@@ -1,6 +1,6 @@
 <template>
      <div>
-          <div class="card w-50 mx-auto pt">
+        <div class="card w-50 mx-auto pt">
              <div class="card-header bg-dark text-light pt-5">
                <div class="row">
                    <div class="col-4">
@@ -19,36 +19,25 @@
                </div>
              </div>
              <div class="card-body bg-secondary text-light">
-                <div class="row">
+                <div class="row" v-for="(day, index) in daily" :key="index">
                     <div class="col-12 py-2">
                         <div class="row">
                             <div class="col-2">Mon</div>
-                            <div class="col-8">Clear trough out the day</div>
-                            <div class="col-2"> <span>30 <sup>o</sup>C</span></div>
+                            <div class="col-8">{{day.summary}}</div>
+                            <div class="col-2"> <span>{{day.apparentTemperatureHigh}} <sup>o</sup>C</span></div>
                         </div>
                         <hr>
                     </div>
-                    <div class="col-12 py-2">
-                        <div class="row">
-                            <div class="col-2">Mon</div>
-                            <div class="col-8">Clear trough out the day</div>
-                            <div class="col-2"> <span>30 <sup>o</sup>C</span></div>
-                        </div>
+                    
+                   
                         <hr>
-                    </div>
-                    <div class="col-12 py-2">
-                        <div class="row">
-                            <div class="col-2">Mon</div>
-                            <div class="col-8">Clear trough out the day</div>
-                            <div class="col-2"> <span>30 <sup>o</sup>C</span></div>
-                        </div>
-                        <hr>
-                    </div>
-                </div>
+                 </div>
+                 
+            </div>
              </div>
             
-         </div>
-     </div>
+ </div>
+    
 </template>
 
 <script>
@@ -79,12 +68,12 @@ export default {
 
                   fetch(`/api/weather?lat=${this.location.lat}&lng=${this.location.lng}&name=${this.location.name}`)
             .then(res=>res.json()).then(data=>{
-                console.log(data.daily);
+                console.log(data);
                 
                 this.currentTemprature.actual=Math.round(data.currently.temperature);
                 this.currentTemprature.feels=Math.round(data.currently.apparentTemperature);
                 this.currentTemprature.summary=data.currently.summary;
-                this.currentTemprature.icone=this. dashed(data.currently.icon);
+                this.currentTemprature.icone=this.dashed(data.currently.icon);
                 this.daily=data.daily.data;
 
             })
